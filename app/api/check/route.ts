@@ -1,8 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 
-// Initialize the Gemini client.
-// It automatically picks up GEMINI_API_KEY from your environment variables.
 const ai = new GoogleGenAI({});
 
 const TUTOR_PROMPT = `
@@ -11,6 +9,7 @@ const TUTOR_PROMPT = `
 
   You must strictly adhere to this JSON structure:
   {
+    "grammarScore": 8, // A number from 1 to 10 evaluating the raw grammar and syntax quality.
     "errors": [
       {
         "phrase": "The specific incorrect text",
@@ -35,13 +34,10 @@ export async function POST(req: Request) {
     const { text, context } = await req.json();
 
     const response = await ai.models.generateContent({
-      // You can use "gemini-3-flash-preview" for speed,
-      // but "gemini-2.5-pro" will give you much better literary analysis for an English class app.
-      model: "gemini-2.5-flash-lite",
+      model: "gemini-2.5-flash-lite", // or gemini-2.5-pro
       contents: `Here is the user's text for review (Context: ${context || "None"}):\n"${text}"`,
       config: {
         systemInstruction: TUTOR_PROMPT,
-        // This guarantees the output is formatted as a JSON string, preventing markdown blocks (```json)
         responseMimeType: "application/json",
         temperature: 0.7,
       },
@@ -51,7 +47,6 @@ export async function POST(req: Request) {
       throw new Error("No text returned from Gemini");
     }
 
-    // Parse the JSON string returned by the model
     const tutorAnalysis = JSON.parse(response.text);
     return NextResponse.json(tutorAnalysis);
   } catch (error) {
