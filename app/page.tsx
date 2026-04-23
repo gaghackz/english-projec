@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import {
   createNewChat,
   addMessageToChat,
@@ -227,7 +228,14 @@ export default function PeakChatInterface() {
         </div>
 
         <div className="pt-4 border-t border-white/5 mt-auto flex items-center gap-3 px-2">
-          <div className="w-8 h-8 rounded-full bg-bombon-panel"></div>
+          {/* Replaced the empty div with the Next.js Image component */}
+          <Image
+            src="/boi.png"
+            alt="Student Profile"
+            width={32}
+            height={32}
+            className="rounded-full object-cover border border-white/10 shadow-sm"
+          />
           <div className="text-sm">
             <p className="font-medium">Student Account</p>
             <p className="text-xs text-bombon-textMuted">English 101</p>
