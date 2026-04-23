@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Map the Next.js font variables to Tailwind */
+  --font-sans: var(--font-sans);
+  --font-instrument: var(--font-instrument);
+
+  /* Your custom colors from earlier */
+  --color-bombon-dark: #120f1c;
+  --color-bombon-panel: #1a1625;
+  --color-bombon-accent: #d4ff00;
+  --color-bombon-textMain: #ffffff;
+  --color-bombon-textMuted: #8b8894;
+}
+
+/* Base styles to ensure everything inherits properly */
+html,
+body {
+  height: 100%;
+}
