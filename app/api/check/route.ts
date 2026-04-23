@@ -23,7 +23,8 @@ const TUTOR_PROMPT = `
         "suggestions": ["Alternative showing sentence 1", "Alternative showing sentence 2"]
       }
     ],
-    "varianceSummary": "A brief summary analyzing if their sentence lengths are varied or monotonous."
+    "varianceSummary": "A brief summary analyzing if their sentence lengths are varied or monotonous.",
+    "correctedParagraph": "The full original text rewritten to fix all grammatical errors and improve overall flow, while maintaining the user's original voice."
   }
 
   **Crucial Rule:** Your primary output must highlight the original text for specific critique. Respond ONLY with valid JSON.

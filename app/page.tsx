@@ -158,6 +158,15 @@ export default function PeakChatInterface() {
             </div>
           )}
 
+          {/* Add this new block for the corrected paragraph */}
+          {data.correctedParagraph && (
+            <div className="bg-green-500/10 border border-green-500/20 p-4 rounded-xl mt-4">
+              <h4 className="text-green-400 font-bold mb-2">Revised Version</h4>
+              <p className="text-white leading-relaxed">
+                {data.correctedParagraph}
+              </p>
+            </div>
+          )}
           {data.varianceSummary && (
             <div className="bg-bombon-panel p-4 rounded-xl border border-white/5">
               <p className="text-bombon-textMuted italic">
